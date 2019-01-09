@@ -1,0 +1,1 @@
+D:/wamp64/www/LaCite/wp-content/plugins/query-monitor/wp-content/db.php
