@@ -48,15 +48,19 @@ $queryCours = new WP_Query( array( 'post_type' => 'informations', 'title' => $ex
         <h2>Comment notre école marche ?</h2>
         <div class="grid">
             <div class="categorie">
+                <img src="<?php echo get_stylesheet_directory_uri()?>/assets/diplome.svg">
                 <a href="#eleve">Comment l'élève vit ?</a>
             </div>
             <div class="categorie">
+                <img src="<?php echo get_stylesheet_directory_uri()?>/assets/old-school.svg">
                 <a href="#ecole">Comment est-ce-que le système fonctionne ?</a>
             </div>
             <div class="categorie">
+                <img src="<?php echo get_stylesheet_directory_uri()?>/assets/course.svg">
                 <a href="#cours">Comment sont les cours ?</a>
             </div>
             <div class="categorie">
+                <img src="<?php echo get_stylesheet_directory_uri()?>/assets/classroom.svg">
                 <a href="#professeurs">Comment travaillent les professeurs ?</a>
             </div>
         </div>

@@ -10,19 +10,52 @@ $post = get_post($postid);
 $terms = get_the_terms($post->ID, 'about');
 
 $query = new WP_Query( array( 'post_type' => 'informations', 'title' => $explodedURL[6], 'post__not_in' => array($postid)));
-
+$term = get_field('theme');
+$table = get_field('table');
+$image = get_field('image');
 ?>
 <main>
     <div class="arianne">
         <p><a href="./accueil">Accueil</a></p>
         <p><a href="./comment-ca-marche">Comment notre école marche ?</a></p>
-        <p><a href="./comment-ca-marche"><?php foreach($terms as $term){echo $term->name;}?></a></p>
+        <p><a href="./comment-ca-marche"><?php echo $term ?></a></p>
         <p><a href="#"><?php echo $post -> post_title?></a></p>
     </div>
     <section class="question">
         <h2><?php echo $post -> post_title?></h2>
-        <img src="<?php echo get_template_directory_uri()?>/assets/ecole.jpg" alt="Photos d'école" width="665">
+        <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt']?>">
         <p><?php echo $post -> post_content ?></p>
+        <?php if ( $table ) {
+            echo '<table>';
+            if ( $table['header'] ) {
+
+                echo '<thead>';
+
+                echo '<tr>';
+
+                foreach ( $table['header'] as $th ) {
+
+                    echo '<th>';
+                    echo $th['c'];
+                    echo '</th>';
+                }
+                echo '</tr>';
+                echo '</thead>';
+            }
+            echo '<tbody>';
+            foreach ( $table['body'] as $tr ) {
+                echo '<tr>';
+                foreach ( $tr as $td ) {
+
+                    echo '<td>';
+                    echo $td['c'];
+                    echo '</td>';
+                }
+                echo '</tr>';
+            }
+            echo '</tbody>';
+            echo '</table>';
+        } ?>
     </section>
     <section class="interest">
         <div>

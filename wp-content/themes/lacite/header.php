@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>La CiTé - Accueil</title>
+    <meta name="robots" content="noindex,follow" />
+    <title>La CiTé, Ecole vivante à Liège</title>
     <link href="<?php echo get_stylesheet_directory_uri()?>/style.css" rel="stylesheet">
-    <?php wp_head(); ?>
 </head>
 <body>
 <header class="header">
@@ -24,9 +24,5 @@
     );
     echo strip_tags(wp_nav_menu( $menuParameters ), '<a>' );
     ?>
-        <form class="nav-menu__form">
-            <label for="recherche" class="hidden">Recherche:</label>
-            <input type="text" name="recherche" id="recherche" placeholder="Rechercher">
-        </form>
     </nav>
 </header>

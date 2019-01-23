@@ -100,6 +100,52 @@ function wpm_custom_post_type_faq()
     register_post_type('faq', $args);
 }
 
+function wpm_custom_post_type_contact()
+{
+
+    // On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
+    $labels = array(
+        // Le nom au pluriel
+        'name' => _x('Informations de contact', 'Post Type General Name'),
+        // Le nom au singulier
+        'singular_name' => _x('Information de contact', 'Post Type Singular Name'),
+        // Le libellé affiché dans le menu
+        'menu_name' => __('Informations de contact'),
+        // Les différents libellés de l'administration
+        'all_items' => __('Toutes les informations de contact'),
+        'view_item' => __('Voir les informations de contact'),
+        'add_new_item' => __('Ajouter une nouvelle information de contact'),
+        'add_new' => __('Ajouter'),
+        'edit_item' => __("Editer l'information de contact"),
+        'update_item' => __("Modifier l'information de contact"),
+        'search_items' => __('Rechercher une information de contact'),
+        'not_found' => __('Non trouvée'),
+        'not_found_in_trash' => __('Non trouvée dans la corbeille'),
+    );
+
+    // On peut définir ici d'autres options pour notre custom post type
+
+    $args = array(
+        'label' => __('Contact'),
+        'description' => __('Toutes les informations de contact'),
+        'labels' => $labels,
+        // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
+        'supports' => array('title'),
+        /*
+        * Différentes options supplémentaires
+        */
+        'hierarchical' => false,
+        'public' => true,
+        'menu_icon' => __('dashicons-email-alt'),
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'contact'),
+
+    );
+
+    // On enregistre notre custom post type qu'on nomme ici "informations" et ses arguments
+    register_post_type('contact', $args);
+}
+
 function create_about_taxonomy() {
 
 // Labels part for the GUI
@@ -140,5 +186,6 @@ add_image_size('image_size/4', 300,225, false);
 
 add_action( 'init', 'wpm_custom_post_type', 0 );
 add_action( 'init', 'wpm_custom_post_type_faq', 0 );
+add_action( 'init', 'wpm_custom_post_type_contact', 0 );
 add_action( 'init', 'create_about_taxonomy', 0 );
 add_action( 'init', 'register_my_menus', 0 );

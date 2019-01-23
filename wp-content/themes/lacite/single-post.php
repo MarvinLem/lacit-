@@ -11,12 +11,12 @@ $post = get_post($postid);
 $imageMain = get_field('image');
 $date = get_field('date');
 
-$query = new WP_Query( array( 'post_type' => 'post', 'title' => $explodedURL[5], 'post__not_in' => array($postid)));
+$query = new WP_Query( array( 'post_type' => 'post', 'title' => $explodedURL[5], 'posts_per_page' => 3, 'post__not_in' => array($postid)));
 
 ?>
 <main>
     <section class="main-article">
-            <img src="<?php echo $imageMain['url']?>" alt="Photo d'étudiants contents" width="663" height="428">
+            <img src="<?php echo $imageMain['url']?>" alt="<?php echo $imageMain['alt'] ?>" width="663" height="428">
             <div>
                 <h2><?php echo $post -> post_title ?></h2>
                 <p><small><?php echo $date ?></small></p>
@@ -30,8 +30,9 @@ $query = new WP_Query( array( 'post_type' => 'post', 'title' => $explodedURL[5],
         <?php $image = get_field('image');?>
         <div>
             <h3><?php the_title(); ?></h3>
-            <img src="<?php echo $image['url']?>" alt="Photo d'étudiants contents" width="388" height="250">
+            <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt']?>">
             <p><?php $content = get_the_content(); echo mb_strimwidth($content, 0, 200, '...');?></p>
+            <a href="<?php the_permalink() ?>">Voir cet article</a>
         </div>
     <?php endwhile; ?>
 <?php endif; ?>
